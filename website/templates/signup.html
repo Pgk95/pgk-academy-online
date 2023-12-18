@@ -32,6 +32,7 @@
                 class="form-control"
                 id="username"
                 placeholder="Enter your username"
+                required
               />
             </div>
             <div class="mb-3">
@@ -41,6 +42,7 @@
                 class="form-control"
                 id="email"
                 placeholder="Enter your email"
+                required
               />
             </div>
             <div class="mb-3">
@@ -50,7 +52,11 @@
                 class="form-control"
                 id="password"
                 placeholder="Enter your password"
+                required
+                oninput="validatePassword()"
               />
+              <button type="button" class="btn btn-outline-secondary ms-2" onclick="togglePasswordVisibility()">
+                <i class="bi bi-eye-slash"></i>
             </div>
             <div class="mb-3">
               <label for="confirmPassword" class="form-label"
@@ -61,7 +67,12 @@
                 class="form-control"
                 id="confirmPassword"
                 placeholder="Confirm your password"
+                required
+                oninput="validatePassword()"
               />
+              <button type="button" class="btn btn-outline-secondary ms-2" onclick="togglePasswordVisibility()">
+                <i class="bi bi-eye-slash"></i></button>
+              <small id="passwordHelp" class="form-text text-danger"></small>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
             <p class="mt-4">
@@ -115,5 +126,8 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+
+    <script src="../static/js/home.js"></script>
+
   </body>
 </html>
