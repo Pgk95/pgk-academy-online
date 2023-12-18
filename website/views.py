@@ -15,3 +15,7 @@ def about_us():
 @views.route('/Contact_Us')
 def contact_us():
     return render_template("contact us.html")
+
+@views.route('/Dashboard/<username>')
+def dashboard(username):
+    return render_template("dashboard.html", username=username)

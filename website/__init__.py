@@ -2,11 +2,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from flask_migrate import Migrate
+from flask_login import LoginManager
 import os
 
 
 db = SQLAlchemy()
 migrate = Migrate()
+
 
 # Load environment variables
 load_dotenv()
@@ -36,6 +38,8 @@ def create_app():
     from .models import User
 
     return app
+
+login_manager=LoginManager()
 
 # function to create the database
 def create_db(app):
