@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Online Academy</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar (You can reuse the navigation bar code here) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('views.home') }}">Online Academy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('views.home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('views.about_us') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Us Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>About Us</h1>
+                <p>PGK Academy is a dynamic online learning platform dedicated to helping you unlock your full potential. We believe that education should be accessible to everyone, everywhere. </p>
+                <p>Our mission is to provide a diverse range of high-quality courses, taught by industry experts, that empower you to acquire new skills, pursue your passions, and achieve your goals. Whether you're looking to enhance your career, explore new interests, or simply expand your knowledge, PGK Academy is here to guide you on your learning journey. Join our vibrant community of learners today and embark on a path of continuous growth and discovery.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://img.freepik.com/premium-vector/online-school-logo-learning-logo-design-vector_567288-21.jpg" alt="About Us Image" class="img-fluid rounded">
+            </div>
+            <p class="mt-4"><a href="{{ url_for('views.home') }}">Return to Home</a></p>
+        </div>
+    </div>
+    <br>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <img src="../static/images/logo.png" alt="Your Logo" class="img-fluid mb-2">
+              <p class="text-muted">© 2023 PGK Academy online. All rights reserved.</p>
+            </div>
+            <div class="col-sm">
+              <h5>Links</h5>
+              <ul class="list-unstyled text-muted">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
