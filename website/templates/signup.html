@@ -13,45 +13,75 @@
   </head>
   <body>
     <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <h2>Welcome!</h2>
-            <p>Already have an account? <a href="{{ url_for('auth.login') }}" class="link-primary">Log in here</a></p>
-            <hr>
-            <h3>Sign Up</h3>
-            <form method="POST" action="{{ url_for('auth.sign_up') }}">
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your username">
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password">
-              </div>
-              <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
-              </div>
-              <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
-              <p class="mt-4"><a href="{{ url_for('views.home') }}">Return to Home</a></p>
-            </form>
-          </div>
-          <div class="col-md-6 text-center">
-            <img src="https://st.depositphotos.com/18722762/51522/v/450/depositphotos_515228796-stock-illustration-online-registration-sign-login-account.jpg" alt="Person smiling and waving" class="img-fluid mb-3 rounded-circle">
-            <h3>Join our community!</h3>
-            <p>Sign up today and become a member to this great platform.</p>
-          </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2>Welcome!</h2>
+          <p>
+            Already have an account?
+            <a href="{{ url_for('auth.login') }}" class="link-primary"
+              >Log in here</a
+            >
+          </p>
+          <hr />
+          <h3>Sign Up</h3>
+          <form method="POST" action="{{ url_for('auth.sign_up') }}">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Enter your username"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Enter your password"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+            <p class="mt-4">
+              <a href="{{ url_for('views.home') }}">Return to Home</a>
+            </p>
+          </form>
         </div>
-      </div>      
-<br>
-<br>
-
-
-
+        <div class="col-md-6 text-center">
+          <img
+            src="https://st.depositphotos.com/18722762/51522/v/450/depositphotos_515228796-stock-illustration-online-registration-sign-login-account.jpg"
+            alt="Person smiling and waving"
+            class="img-fluid mb-3 rounded-circle"
+          />
+          <h3>Join our community!</h3>
+          <p>Sign up today and become a member to this great platform.</p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
 
     <!--Footer-->
     <footer class="bg-dark text-white py-3">
