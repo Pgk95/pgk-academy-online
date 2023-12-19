@@ -58,6 +58,8 @@ def login():
             login_user(user, remember=True)
             flash('Logged in successfully!', category='success')
             return redirect(url_for('views.dashboard', username=username))
+        else:
+            flash('Incorrect username or password.', category='error')
     return render_template('login.html')
 
 

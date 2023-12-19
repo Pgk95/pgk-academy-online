@@ -31,17 +31,23 @@
                         <a class="nav-link" href="{{ url_for('views.contact_us') }}">Contact</a>
                     </li>
                     <!--Signup and login buttons-->
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>
+                    </li>
+                    {% else %}
                     <div class="d-flex">
                       <a class="btn btn-outline-primary" href="{{ url_for('auth.sign_up') }}">Sign Up</a>
                       <br>
                       <a class="btn btn-outline-primary" href="{{ url_for('auth.login') }}">Login</a>
                     </div>
+                    {% endif %}    
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!--getting flashed messages-->
+    <!--getting flashed messages red when error and green when success-->
     {% with messages = get_flashed_messages(with_categories=True) %}
       {% if messages %}
       {% for category, message in messages %}
