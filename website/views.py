@@ -6,7 +6,7 @@ views = Blueprint('views', __name__)
 # Initialize the routes
 @views.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('base.html')
 
 @views.route('/About_Us')
 def about_us():

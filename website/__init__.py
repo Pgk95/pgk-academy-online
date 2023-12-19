@@ -8,6 +8,7 @@ import os
 
 db = SQLAlchemy()
 migrate = Migrate()
+login_manager=LoginManager()
 
 
 # Load environment variables
@@ -39,7 +40,6 @@ def create_app():
 
     return app
 
-login_manager=LoginManager()
 
 # function to create the database
 def create_db(app):

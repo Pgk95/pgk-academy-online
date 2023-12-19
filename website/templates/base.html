@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PGK Academy{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('views.home') }}">PGK Academy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('views.home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('views.about_us') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('views.contact_us') }}">Contact</a>
+                    </li>
+                    <!--Signup and login buttons-->
+                    <div class="d-flex">
+                      <a class="btn btn-outline-primary" href="{{ url_for('auth.sign_up') }}">Sign Up</a>
+                      <br>
+                      <a class="btn btn-outline-primary" href="{{ url_for('auth.login') }}">Login</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        {% block content %}
+        <section class="py-lg-16 py-6">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <div class=" col-xxl-5  col-xl-6 col-lg-6 col-12">
+                <div>
+                  <h1 class="display-2 fw-bold mb-3">Learn today’s most in-<u class="text-warning"><span class="text-primary">demand-skills</span></u></h1>
+                  <ul class="list-unstyled mb-5">
+                    <li class="mb-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="var(--geeks-success)" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                      </svg>
+                      <span class="ms-2">No credit card required</span>
+                    </li>
+                    <li class="mb-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="var(--geeks-success)" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                      </svg>
+                      <span class="ms-2">Customer service 24/7</span>
+                    </li>
+                    <li class="mb-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="var(--geeks-success)" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                      </svg>
+                      <span class="ms-2">No setup fee</span>
+                    </li>
+                    <li class="mb-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="var(--geeks-success)" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                      </svg>
+                      <span class="ms-2">Cancel any time</span>
+                    </li>
+                  </ul>
+                  <a href="{{ url_for('auth.sign_up') }}" class="btn btn-primary btn-lg">Get Started</a>
+                </div>
+              </div>
+              <div class="col-xxl-5 offset-xxl-1 col-xl-6 col-lg-6 col-12 d-lg-flex justify-content-end">
+                  <div class="mt-12 mt-lg-0 position-relative">
+                    <img src="https://www.aismt13.fr/wp-content/uploads/2020/12/E-Learning-illustation-pdf.jpg" alt="online course" class="img-fluid rounded-4 w-100 z-1 position-relative">
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <br>
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <img src="../static/images/logo.png" alt="Your Logo" class="img-fluid mb-2">
+              <p class="text-muted">© 2023 PGK Academy online. All rights reserved.</p>
+            </div>
+            <div class="col-sm">
+              <h5>Links</h5>
+              <ul class="list-unstyled text-muted">
+                <li><a href="{{ url_for('views.about_us') }}">About Us</a></li>
+                <li><a href="{{ url_for('views.contact_us') }}">Contact</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
