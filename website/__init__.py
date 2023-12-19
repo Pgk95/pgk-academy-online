@@ -8,7 +8,7 @@ import os
 
 db = SQLAlchemy()
 migrate = Migrate()
-login_manager=LoginManager()
+
 
 
 # Load environment variables
@@ -37,6 +37,18 @@ def create_app():
 
     # database creation
     from .models import User
+
+    create_db(app)
+
+    # initialize the login manager
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    # load the user
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
 
     return app
 

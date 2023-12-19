@@ -25,6 +25,7 @@ style="height: 100vh"
           type="text"
           class="form-control"
           id="username"
+          name="username"
           placeholder="Enter your username"
           required
         />
@@ -36,6 +37,7 @@ style="height: 100vh"
             type="password"
             class="form-control"
             id="password"
+            name="password"
             placeholder="Enter your password"
             required
           />
@@ -51,10 +53,6 @@ style="height: 100vh"
           >Forgot your password?
           <a href="#">Click here to reset</a></small
         >
-      </div>
-      <div class="d-flex align-items-center">
-        <input type="checkbox" class="form-check-input" id="remember" />
-        <label for="remember" class="form-label ms-2">Remember me</label>
       </div>
       <button type="submit" class="btn btn-primary mt-3">Log In</button>
       <p class="mt-4">
@@ -73,18 +71,6 @@ style="height: 100vh"
 </div>
 </div>
 
-<script>
-const passwordToggleBtn = document.getElementById("password-toggle");
-passwordToggleBtn.addEventListener("click", () => {
-  const passwordInput = document.getElementById("password");
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    passwordToggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
-  } else {
-    passwordInput.type = "password";
-    passwordToggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
-  }
-});
-</script>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
 <br />
 {% endblock %}

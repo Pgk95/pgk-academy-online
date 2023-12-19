@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required
 
 # Create a blueprint
 views = Blueprint('views', __name__)
@@ -16,6 +17,7 @@ def about_us():
 def contact_us():
     return render_template("contact us.html")
 
-@views.route('/Dashboard/<username>')
-def dashboard(username):
-    return render_template("dashboard.html", username=username)
+@views.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template("dashboard.html")

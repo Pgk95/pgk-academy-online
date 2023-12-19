@@ -58,3 +58,16 @@ function togglePasswordVisibility() {
       visibilityToggle.textContent = "Show Password";
     }
   }
+
+
+const passwordToggleBtn = document.getElementById("password-toggle");
+passwordToggleBtn.addEventListener("click", () => {
+  const passwordInput = document.getElementById("password");
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    passwordToggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
+  } else {
+    passwordInput.type = "password";
+    passwordToggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+  }
+});
