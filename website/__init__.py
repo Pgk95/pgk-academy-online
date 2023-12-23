@@ -30,10 +30,12 @@ def create_app():
     # import the views, models, auth
     from .views import views
     from .auth import auth
+    from .course import course
 
     # register the blueprints
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(course, url_prefix='/dashboard/')
 
     # database creation
     from .models import User

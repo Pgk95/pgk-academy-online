@@ -1,34 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container mt-4">
-    <h2>Welcome to Your Dashboard, {{ current_user.username }}!</h2>
+<div class="d-flex justify-content-end">
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-person-circle"></i>
+    Profile
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <li><a class="dropdown-item" href="#">My Profile</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="{{ url_for('course.create_course') }}">Create Course</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
+    </ul>
+    
+    </ul>
+</div>
+</div>
 
-    <div class="row mt-4">
-      <div class="col-md-8">
-        <h3>Your Courses</h3>
-        <ul>
-          {% for course in courses %}
-            <li>{{ course.name }}</li>
-          {% endfor %}
-        </ul>
-      </div>
 
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Profile Management</h5>
-            <p class="card-text">Username: {{ current_user.username }}</p>
-            <p class="card-text">Email: {{ current_user.email }}</p>
-            <!-- Add more profile information as needed -->
-            <a href="#" class="btn btn-primary">Edit Profile</a>
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Logout</a>
-        </div>
-      </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Welcome to your dashboard, {{ current_user.username }}</h1>
     </div>
   </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2 class="text-center">Available Courses</h2>
+    </div>
+
+    <!--Courses card-->
+    <div class="card" style="width: 18rem;">
+      <img src="" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Python Foe Beginners</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
 {% endblock %}
