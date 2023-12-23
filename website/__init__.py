@@ -38,7 +38,7 @@ def create_app():
     app.register_blueprint(course, url_prefix='/dashboard/')
 
     # database creation
-    from .models import User
+    from .models import User, Course
 
     create_db(app)
 

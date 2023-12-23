@@ -21,3 +21,7 @@ def contact_us():
 @login_required
 def dashboard():
     return render_template("dashboard.html")
+
+@views.route('/courses')
+def courses():
+    return render_template('courses.html')
