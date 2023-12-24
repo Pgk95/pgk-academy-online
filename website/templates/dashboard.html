@@ -4,15 +4,14 @@
 <div class="d-flex justify-content-end">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="bi bi-person-circle"></i>
-    Profile
+    <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" alt="Profile Picture" class="bi bi-person-circle img-fluid rounded-circle" style="width: 40px; height: 40px;">
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <li><a class="dropdown-item" href="#">My Profile</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <a class="dropdown-item" href="{{ url_for('profile.profile_page') }}"><i class="bi bi-person-circle"></i>My Profile</a>
+      <a class="dropdown-item" href="{{ url_for('profile.upload_picture') }}">&nbsp;<i class="bi bi-gear"></i>Settings</a>
       <li><a class="dropdown-item" href="{{ url_for('course.create_course') }}">Create Course</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
+      <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
     </ul>
     
     </ul>

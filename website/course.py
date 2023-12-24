@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint
+from flask import render_template, Blueprint
 from flask_login import login_required
 
 # Create a blueprint

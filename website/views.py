@@ -15,7 +15,7 @@ def about_us():
 
 @views.route('/Contact_Us')
 def contact_us():
-    return render_template("contact us.html")
+    return render_template("contact_us.html")
 
 @views.route('/dashboard')
 @login_required

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile - PGK Academy{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center mb-4">Edit Profile</h1>
+
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Username</h5>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="{{ url_for('profile.profile_page') }}">
+              <div class="form-group">
+                <label for="new_username">New Username:</label>
+                <input type="text" class="form-control" id="new_username" name="new_username" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title">Profile Picture</h5>
+          </div>
+          <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" alt="Profile Picture" class="bi bi-person-circle img-fluid rounded-circle" style="width: 40px; height: 40px;">
+            <form method="POST" action="{{ url_for('profile.upload_picture') }}" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="profile_picture" class="btn btn-secondary">
+                  Upload New Picture
+                  <input type="file" name="profile_picture" id="profile_picture" hidden>
+                </label>
+                <br>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

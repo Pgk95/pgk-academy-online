@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
+    profile_picture = db.Column(db.String(255), default='default.png')
     password_hash = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())

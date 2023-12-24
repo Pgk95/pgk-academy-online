@@ -19,6 +19,9 @@ def create_app():
     # intializing the name of the app
     app = Flask(__name__)
 
+    # handling static files for the profile picture
+    app.config['UPLOAD_FOLDER'] = 'website/static/profile_pics'
+
     # setting the secret key and database uri
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
@@ -31,11 +34,13 @@ def create_app():
     from .views import views
     from .auth import auth
     from .course import course
+    from .profile import profile
 
     # register the blueprints
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(course, url_prefix='/dashboard/')
+    app.register_blueprint(profile, url_prefix='/dashboard/')
 
     # database creation
     from .models import User, Course
