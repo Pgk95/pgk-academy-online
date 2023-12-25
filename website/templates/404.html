@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--Error handler 404-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mt-5">404</h1>
+            <h2 class="text-center">Page Not Found</h2>
+            <p class="text-center">The page you are looking for does not exist.</p>
+        </div>
+    </div>
+    <!--return the user to homepage-->
+    <div class="row text-center">
+        <div class="col-md-12">
+            <a href="{{ url_for('views.home') }}" class="btn btn-primary text-center">Return to Home</a>
+        </div>
+
+{% endblock %}
