@@ -3,6 +3,22 @@
 {% block title %}Edit Profile - PGK Academy{% endblock %}
 
 {% block content %}
+<div class="d-flex justify-content-end">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" alt="Profile Picture" class="bi bi-person-circle img-fluid rounded-circle" style="width: 40px; height: 40px;">
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ url_for('profile.profile_page', user_id=current_user.id) }}"><i class="bi bi-person-circle"></i>My Profile</a>
+        <a class="dropdown-item" href="{{ url_for('profile.upload_picture', user_id=current_user.id) }}">&nbsp;<i class="bi bi-gear"></i>Settings</a>
+        <li><a class="dropdown-item" href="{{ url_for('course.create_course', user_id=current_user.id) }}">Create Course</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
+      </ul>
+      
+      </ul>
+  </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -13,12 +29,16 @@
             <h5 class="card-title">Username</h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="{{ url_for('profile.profile_page') }}">
+            <form method="POST" action="{{ url_for('profile.change_username', user_id=current_user.id) }}">
+              <div>
+                <h1 class="text-center">Current Username: {{ current_user.username }}</h1>
+              </div>
               <div class="form-group">
                 <label for="new_username">New Username:</label>
-                <input type="text" class="form-control" id="new_username" name="new_username" required>
+                <input type="text" class="form-control" id="username" name="username" required>
               </div>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <br>
+              <button type="submit" class="btn btn-primary position-relative">Save</button>
             </form>
           </div>
         </div>
@@ -29,7 +49,7 @@
           </div>
           <div class="card-body text-center">
             <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" alt="Profile Picture" class="bi bi-person-circle img-fluid rounded-circle" style="width: 40px; height: 40px;">
-            <form method="POST" action="{{ url_for('profile.upload_picture') }}" enctype="multipart/form-data">
+            <form id="profileForm" method="POST" action="{{ url_for('profile.upload_picture', user_id=current_user.id) }}" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="profile_picture" class="btn btn-secondary">
                   Upload New Picture
@@ -42,6 +62,7 @@
             </form>
           </div>
         </div>
+      
       </div>
     </div>
   </div>
