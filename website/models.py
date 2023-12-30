@@ -1,5 +1,6 @@
-from . import db
+from .import db
 from flask_login import UserMixin
+from flask import current_app
 from sqlalchemy.sql import func
 
 # Create a User model
@@ -11,6 +12,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True, nullable=False)
     profile_picture = db.Column(db.String(255), default='default.png')
     password_hash = db.Column(db.String(1000), nullable=False)
+    confirmed = db.Column(db.Boolean, nullable=False, default=False)
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
 

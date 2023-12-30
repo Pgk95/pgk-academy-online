@@ -42,7 +42,7 @@
             </form>
           </div>
         </div>
-
+        
         <div class="card mt-4">
           <div class="card-header">
             <h5 class="card-title">Profile Picture</h5>
@@ -58,11 +58,26 @@
                 <br>
               </div>
               <br>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" id="" class="btn btn-primary">Save</button>
             </form>
           </div>
         </div>
-      
+
+        <!--Delete account-->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title">Delete Account</h5>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="{{ url_for('profile.delete_profile', user_id=current_user.id) }}">
+              <div>
+                <h1 class="text-center">Are you sure you want to delete your account?</h1>
+              </div>
+              <br>
+              <button type="submit" id="delete" onclick="deleteChecking()" class="btn btn-danger position-relative">Delete</button>
+            </form>
+          </div>
+          <script src="{{ url_for('static', filename='js/edit_profile.js') }}"></script>
       </div>
     </div>
   </div>

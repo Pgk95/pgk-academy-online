@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request, flash, url_for, redirect
+from flask import Blueprint, render_template, request, flash, url_for, redirect, abort
 from .models import db, User
 from flask_bcrypt import Bcrypt
-from flask_login import login_user, logout_user, login_required, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, logout_user, login_required
+from .token import generate_confirmation_token, confirm_token
+from .email import send_email
+from sqlalchemy.exc import IntegrityError
 
 # initialize the bcrypt
 bcrypt = Bcrypt()
@@ -18,28 +20,37 @@ def sign_up():
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
-        confirm_password = request.form.get('confirm-password')
 
-        # hash the password before storing it in the database
-        hashed_password = bcrypt.generate_password_hash(
-            password).decode('utf-8')
-
-        # check if the email and username exists
-        username_exists = User.query.filter_by(username=username).first()
-        email_exists = User.query.filter_by(email=email).first()
-        if email_exists:
-            flash('Email is already in use.', category='error')
-        elif username_exists:
-            flash('Username is already in use.', category='error')
-        else:
+        try:
             # create the new user
+            hashed_password = bcrypt.generate_password_hash(
+                password).decode('utf-8')
             new_user = User(username=username, email=email,
                             password_hash=hashed_password)
+
+            # add the new user to the database
             db.session.add(new_user)
             db.session.commit()
+
+            # generate the confirmation token
+            token = generate_confirmation_token(new_user.email)
+            confirm_url = url_for('views.confirm_email',
+                                  token=token, _external=True)
+            html = render_template('activate.html', confirm_url=confirm_url)
+            subject = "Please confirm your email"
+            send_email(new_user.email, subject, html)
+
+            # login the user
             login_user(new_user, remember=True)
-            flash('Account created!', category='success')
-            return redirect(url_for('views.dashboard', username=username))
+            flash('Account created successfully! Please check your email to confirm your account.', category='success')
+            return redirect(url_for('views.unconfirmed', username=username))
+        except IntegrityError as e:
+            # check if the username or email already exists
+            db.session.rollback()
+            if 'username' in str(e):
+                flash('Username already exists.', category='error')
+            elif 'email' in str(e):
+                flash('Email already exists.', category='error')
 
     return render_template('signup.html')
 

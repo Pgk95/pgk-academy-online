@@ -102,3 +102,22 @@ def change_username(user_id):
     except Exception as e:
         flash('There was an error updating your username.', category='error')
     return render_template('edit_profile.html', username=user.username)
+
+# function to delete users profile
+@profile.route('/profile/<int:user_id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_profile(user_id):
+    """Delete the user's profile."""
+    # get the user
+    user = User.query.get_or_404(user_id)
+
+    try:
+        if request.method == 'POST':
+            # delete the user
+            db.session.delete(user)
+            db.session.commit()
+            flash('Account deleted successfully!', category='success')
+            return redirect(url_for('views.home'))
+    except Exception as e:
+        flash('There was an error deleting your account.', category='error')
+    return render_template('edit_profile.html', username=user.username)

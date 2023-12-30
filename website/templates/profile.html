@@ -3,6 +3,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="d-flex justify-content-end">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" alt="Edit profile picture" class="bi bi-person-circle img-fluid rounded-circle" style="width: 40px; height: 40px;">
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ url_for('profile.profile_page', user_id=current_user.id) }}"><i class="bi bi-person-circle"></i>My Profile</a>
+        <a class="dropdown-item" href="{{ url_for('profile.upload_picture', user_id=current_user.id) }}">&nbsp;<i class="bi bi-gear"></i>Settings</a>
+        <li><a class="dropdown-item" href="{{ url_for('course.create_course', user_id=current_user.id) }}">&nbsp;<i class="bi bi-pen"></i>Create Course</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
+      </ul>
+      
+      </ul>
+  </div>
+  </div>
+  <br><br>
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-8 offset-md-2">
@@ -14,17 +31,17 @@
           <div class="card-body text-center">
             <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture, user_id=current_user.id) }}" alt="Profile Picture" class="bi bi-person-circle img-fluid rounded-circle" style="width: 40px; height: 40px;">
             <br><br>
-            <div class="card-body text-center"
-            <h5> class="card-title">Username:  {{ current_user.username }}</h5>
+          <div class="card-body text-center"
+            class="card-title">Username: {{ current_user.username }}</h5>
+            <br><br>
             <p class="card-text">Email: {{ current_user.email }}</p>
             <!-- Add more user details as needed -->
 
             <!-- Example: Display user profile picture -->
+          </div>
             </div>
           </div>
-        </div>
-        
+        </div>  
       </div>
     </div>
-  </div>
 {% endblock %}

@@ -29,20 +29,20 @@
                         <a class="nav-link" href="{{ url_for('views.about_us') }}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('views.contact_us') }}">Contact</a>
+                        <a class="nav-link" href="{{ url_for('views.contact') }}">Contact</a>
                     </li>
                     <!--Signup and login buttons-->
-                    {% if current_user.is_authenticated %}
+                    {% if current_user.confirmed and current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('views.dashboard') }}">Dashboard</a>
                     </li>
                     {% else %}
                     <div class="d-flex">
                       <a class="btn btn-outline-primary" href="{{ url_for('auth.sign_up') }}">Sign Up</a>
-                      <br>
+                      &nbsp; &nbsp;
                       <a class="btn btn-outline-primary" href="{{ url_for('auth.login') }}">Login</a>
                     </div>
-                    {% endif %}    
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -140,23 +140,6 @@
           <!-- Grid column -->
 
           <hr class="w-100 clearfix d-md-none" />
-
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-            <p>
-              <a class="text-white">MDBootstrap</a>
-            </p>
-            <p>
-              <a class="text-white">MDWordPress</a>
-            </p>
-            <p>
-              <a class="text-white">BrandFlow</a>
-            </p>
-            <p>
-              <a class="text-white">Bootstrap Angular</a>
-            </p>
-          </div>
           <!-- Grid column -->
 
           <hr class="w-100 clearfix d-md-none" />
@@ -167,16 +150,16 @@
               Useful links
             </h6>
             <p>
-              <a class="text-white">Your Account</a>
+              <a class="text-white" href="{{ url_for('views.home') }}"
+                 >Home</a>
             </p>
             <p>
-              <a class="text-white">Become an Affiliate</a>
+              <a class="text-white" href="{{ url_for('views.about_us') }}"
+                 >About Us</a>
             </p>
             <p>
-              <a class="text-white">Shipping Rates</a>
-            </p>
-            <p>
-              <a class="text-white">Help</a>
+              <a class="text-white" href="{{ url_for('views.courses') }}"
+                 >Courses</a>
             </p>
           </div>
 
@@ -186,10 +169,10 @@
           <!-- Grid column -->
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
             <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-            <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <p><i class="fas fa-home mr-3"></i> Ethiopia</p>
+            <p><i class="fas fa-envelope mr-3"></i> pgkonlineacademy@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +251941220158</p>
+          <!--  <p><i class="fas fa-print mr-3"></i></p>-->
           </div>
           <!-- Grid column -->
         </div>
@@ -206,7 +189,7 @@
           <div class="col-md-7 col-lg-8 text-center text-md-start">
             <!-- Copyright -->
             <div class="p-3">
-              © 2025 Copyright:
+              © 2024 Copyright:
               <a class="text-white" href="{{ url_for('views.home') }}"
                  >Home</a
                 >
@@ -218,7 +201,39 @@
       </section>
       <!-- Section: Copyright -->
     </div>
-    <!-- Grid container -->
+    <!--Sign up for newslatters-->
+            {% if current_user.is_authenticated %}
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div class="newsletter-signup">
+                    <h2>Stay Up to Date with Our Latest News</h2>
+                    <p>Sign up for our newsletter to receive updates on our latest products, services, and blog posts.</p>
+                    <!--newsletter icon-->
+            <i class="bi bi-newspaper"></i>
+            <br>
+            <form action="{{url_for('views.contact')}}" method="POST" >
+              <div class="form-group">
+                <input type="email" class="form-control col-lg-2" placeholder="Enter your email address", required>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary text-center">Click here to subscribe!</button>
+            </form>
+            {% else %}
+            <p class="mt-3">You can also follow us on social media:</p>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/PGK-Academy-100101265724996" target="_blank"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com/PGKAcademy1" target="_blank"><i class="bi bi-twitter"></i></a>
+              <a href="https://www.instagram.com/pgkacademy/" target="_blank"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/pgk-academy-1b1b3b220/" target="_blank"><i class="bi bi-linkedin"></i></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <br>
+
+
   </footer>
   <!-- Footer -->
 </div>
