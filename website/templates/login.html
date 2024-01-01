@@ -18,7 +18,7 @@ style="height: 100vh"
     <h2>Welcome Back!</h2>
   </div>
   <div class="card-body">
-    <form method="POST" action="{{ url_for('auth.login') }}">
+    <form method="POST" action="{{ url_for('auth.login') }}"  >
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input
@@ -51,7 +51,7 @@ style="height: 100vh"
         </div>
         <small class="text-muted"
           >Forgot your password?
-          <a href="#">Click here to reset</a></small
+          <a href="{{ url_for('views.reset_request') }}">Click here to reset</a></small
         >
       </div>
       <button type="submit" class="btn btn-primary mt-3">Log In</button>

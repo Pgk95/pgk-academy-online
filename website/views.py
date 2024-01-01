@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect, url_for
+from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from .models import User
 from .decorators import check_confirmed
@@ -52,24 +52,38 @@ def confirm_email(token):
         flash('You have confirmed your account. Thanks!', 'success')
     return redirect(url_for('views.dashboard'))
 
-@views.route('/resend')
+
+@views.route('/unconfirmed')
 @login_required
 def unconfirmed():
     if current_user.confirmed:
         return redirect('views.home')
-    flash('Please confirm your account!', 'warning')
     return render_template('unconfirmed.html')
+
 
 @views.route('/resend')
 @login_required
 def resend_confirmation():
-    token = generate_confirmation_token(current_user.email)
-    confirm_url = url_for('views.confirm_email', token=token, _external=True)
-    html = render_template('activate.html', confirm_url=confirm_url)
-    subject = "Please confirm your email"
-    send_email(current_user.email, subject, html)
-    flash('A new confirmation email has been sent.', 'success')
-    return redirect(url_for(views.unconfirmed))
+    # if the email is not confirmed, send a new confirmation email
+    if not current_user.confirmed:
+        token = generate_confirmation_token(current_user.email)
+        confirm_url = url_for('views.confirm_email',
+                              token=token, _external=True)
+        html = render_template('activate.html', confirm_url=confirm_url)
+        subject = "Please confirm your email"
+        send_email(current_user.email, subject, html)
+        flash('A new confirmation email has been sent.', 'success')
+    # if the email is confirmed, redirect to the dashboard
+    else:
+        flash('Your account is already confirmed.', 'success')
+    return redirect(url_for('views.dashboard'))
+
+# a route function to handle the reset_request.html page
+
+
+@views.route('/reset_password', methods=['GET', 'POST'])
+def reset_request():
+    return render_template('reset_request.html', title='Reset Password')
 
 
 @views.route('/courses')

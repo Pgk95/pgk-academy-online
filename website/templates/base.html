@@ -50,15 +50,16 @@
 
     <!--getting flashed messages red when error and green when success-->
     {% with messages = get_flashed_messages(with_categories=True) %}
-      {% if messages %}
-      {% for category, message in messages %}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert {% if category == 'success' %}alert-success{% elif category == 'info' %}alert-info{% elif category == 'warning' %}alert-warning{% elif category == 'danger' %}alert-danger{% else %}alert-secondary{% endif %} alert-dismissible fade show" role="alert">
+        <strong>{{ category.capitalize() }}:</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-      {% endfor %}
-      {% endif %}
-    {% endwith %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 
     <!-- Content -->
     <div class="container mt-5">

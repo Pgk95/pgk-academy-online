@@ -1,7 +1,7 @@
 from itsdangerous import URLSafeTimedSerializer
-from flask import app
 from dotenv import load_dotenv
 import os
+from .models import User
 
 load_dotenv()
 
@@ -11,6 +11,7 @@ load_dotenv()
 def generate_confirmation_token(email):
     serializer = URLSafeTimedSerializer(os.getenv('SECRET_KEY'))
     return serializer.dumps(email, salt=os.getenv('SECURITY_PASSWORD_SALT'))
+
 # function to confirm token
 
 

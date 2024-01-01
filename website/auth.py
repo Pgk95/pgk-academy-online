@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, url_for, redirect, abort
 from .models import db, User
 from flask_bcrypt import Bcrypt
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from .token import generate_confirmation_token, confirm_token
 from .email import send_email
 from sqlalchemy.exc import IntegrityError
@@ -73,7 +73,7 @@ def login():
             flash('Incorrect username or password.', category='error')
     return render_template('login.html')
 
-
+# route function to logout the user
 @auth.route('/logout')
 @login_required
 def logout():
