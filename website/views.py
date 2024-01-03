@@ -53,34 +53,29 @@ def confirm_email(token):
     return redirect(url_for('views.dashboard'))
 
 
-@views.route('/unconfirmed')
+@views.route('/resend')
 @login_required
 def unconfirmed():
     if current_user.confirmed:
-        return redirect('views.home')
+        return redirect(url_for('views.dashboard'))
+    flash('Please confirm your account!', 'warning')
     return render_template('unconfirmed.html')
 
 
-@views.route('/resend')
+@views.route('/resend_confirmation')
 @login_required
 def resend_confirmation():
-    # if the email is not confirmed, send a new confirmation email
-    if not current_user.confirmed:
-        token = generate_confirmation_token(current_user.email)
-        confirm_url = url_for('views.confirm_email',
-                              token=token, _external=True)
-        html = render_template('activate.html', confirm_url=confirm_url)
-        subject = "Please confirm your email"
-        send_email(current_user.email, subject, html)
-        flash('A new confirmation email has been sent.', 'success')
-    # if the email is confirmed, redirect to the dashboard
-    else:
-        flash('Your account is already confirmed.', 'success')
-    return redirect(url_for('views.dashboard'))
+    token = generate_confirmation_token(current_user.email)
+    confirm_url = url_for('views.confirm_email',
+                          token=token, _external=True)
+    html = render_template('activate.html', confirm_url=confirm_url)
+    subject = "Please confirm your email"
+    send_email(current_user.email, subject, html)
+    flash('A new confirmation emai has been sent.', 'success')
+    return redirect(url_for('views.unconfirmed'))
+   
 
 # a route function to handle the reset_request.html page
-
-
 @views.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
     return render_template('reset_request.html', title='Reset Password')

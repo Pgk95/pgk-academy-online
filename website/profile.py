@@ -76,6 +76,7 @@ def resize_and_crop_image(image):
 
 
 @profile.route('/profile/<int:user_id>/edit/username', methods=['GET', 'POST'])
+@login_required
 # function to change the username
 def change_username(user_id):
     """Change the username."""
