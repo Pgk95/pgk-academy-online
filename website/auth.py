@@ -4,8 +4,9 @@ from flask_bcrypt import Bcrypt
 from flask_login import login_user, logout_user, login_required, current_user
 from .token import generate_confirmation_token, confirm_token
 from .email import send_email
-from .decorators import reset_requested
+from .decorators import reset_requested, g
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime, timedelta
 
 # initialize the bcrypt
 bcrypt = Bcrypt()
@@ -85,8 +86,15 @@ def reset_request():
 
         # if a email is founded send the reset password email
         if user:
-            # generate the reset password token and send the email
-            token = generate_confirmation_token(user.email)
+            # Invalidate the previous reset token if it exists
+            user.reset_token = None
+            db.session.commit()
+
+            # Generate a new reset token and send the email
+            update_reset_token(user)
+
+            # send the emai with the new reset token
+            token = user.reset_token
             reset_url = url_for('auth.reset_password',
                                   token=token, _external=True)
             html = render_template('reset_email.html', reset_url=reset_url)
@@ -115,18 +123,29 @@ def reset_password(token):
     if request.method == 'POST':
         new_password = request.form.get('new_password')
         hashed_password = bcrypt.generate_password_hash(
-                new_password).decode('utf-8')
+            new_password).decode('utf-8')
         
         # update the user password
         user.password_hash = hashed_password
+        user.reset_token = None
         db.session.commit()
 
-        # and redirect the user to the login page with a success message
-        flash('Your password has been reset successfully. You can now login with your new password.', category='success')
+        flash('Your password has been updated!', category='success')
         return redirect(url_for('auth.login'))
     
     return render_template('reset_password.html', token=token)
 
+
+            
+
+# function to update the reset token and the reset token expiration time because the first token must be used
+def update_reset_token(user):
+    # Generate a new reset token and set its expiration time
+    token = generate_confirmation_token(user.email)
+
+    # update the user reset token and reset token expiration time
+    user.reset_token = token
+    db.session.commit()
 
 
 # route function to logout the user

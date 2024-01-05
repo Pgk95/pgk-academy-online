@@ -1,9 +1,10 @@
 from functools import wraps
 
-from flask import g, flash, redirect, url_for, request
+from flask import g, flash, redirect, url_for
 from flask_login import current_user
 from .models import User
 from .token import confirm_token
+from datetime import datetime
 
 # a check_confirmed decorator to check if the user has confirmed their email address
 def check_confirmed(func):
@@ -30,7 +31,7 @@ def reset_requested(func):
             return redirect(url_for('auth.login'))
         
         user = User.query.filter_by(email=email).first_or_404()
-        if not user:
+        if not user or user.reset_token != token:
             flash('Invalid reset link', 'danger')
             return redirect(url_for('auth.login'))
         

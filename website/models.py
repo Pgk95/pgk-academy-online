@@ -2,6 +2,7 @@ from .import db
 from flask_login import UserMixin
 from flask import current_app
 from sqlalchemy.sql import func
+from datetime import datetime, timedelta
 
 # Create a User model
 
@@ -15,7 +16,8 @@ class User(db.Model, UserMixin):
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
-
+    reset_token = db.Column(db.String(1000), unique=True)
+    
     # set the table name to 'users'
     __tablename__ = 'users'
 
