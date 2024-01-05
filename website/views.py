@@ -73,13 +73,6 @@ def resend_confirmation():
     send_email(current_user.email, subject, html)
     flash('A new confirmation emai has been sent.', 'success')
     return redirect(url_for('views.unconfirmed'))
-   
-
-# a route function to handle the reset_request.html page
-@views.route('/reset_password', methods=['GET', 'POST'])
-def reset_request():
-    return render_template('reset_request.html', title='Reset Password')
-
 
 @views.route('/courses')
 def courses():

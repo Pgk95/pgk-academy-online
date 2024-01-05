@@ -1,56 +1,32 @@
-{% extends 'base.html' %}
-
-{% block title %}Login - PGK Academy{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Reset Password - PGK Academy{%
+endblock %} {% block content %}
 <div
-class="container d-flex align-items-center justify-content-center"
-style="height: 100vh"
+  class="container d-flex flex-column align-items-center justify-content-center h-100"
 >
-<div class="card shadow-lg" style="width: 30rem">
-  <div class="card-header text-center">
-    <img
-      src="https://static.vecteezy.com/system/resources/previews/022/014/159/non_2x/avatar-icon-profile-icon-member-login-isolated-vector.jpg"
-      alt="Key and lock symbol"
-      class="img-fluid mb-3"
-      style="width: 100px"
-    />
-    <h2>Welcome Back!</h2>
-  </div>
-<div class="card-body">
-    <form method="POST" action="{{ url_for('views.reset_request') }}" onsubmit="return validatePassword()">
-        <div class="mb-3">
-          <label for="password" class="form-label">New Password</label>
-          <div class="input-group">
-            <input type="password" class="form-control" id="password" name="new_password" placeholder="Enter your password" required oninput="validatePassword()">
-            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility()">
-              <i class="bi bi-eye-slash"></i>
-            </button>
-          </div>
-          <small id="passwordHelp" class="form-text text-danger"></small>
-        </div>
-        <div class="mb-3">
-          <label for="confirmPassword" class="form-label">Confirm New Password</label>
-          <div class="input-group">
-            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Confirm your password" required oninput="validatePassword()">
-            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility()">
-              <i class="bi bi-eye-slash"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-</div>
+  <div class="card rounded-lg shadow-sm border-0 bg-light p-4">
+    <h2 class="text-center mb-4">Reset Password</h2>
 
+    <form method="POST" action="{{ url_for('auth.reset_request') }}">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
 
-      <button type="submit" class="btn btn-primary mt-4">Reset</button>
-      <p class="mt-4">
-        <a href="{{ url_for('views.home') }}">Return to Home</a>
-      </p>
+      <button type="submit" class="btn btn-outline-success">
+        Request Password Reset
+      </button>
     </form>
+
+    <p class="mt-3 text-center">
+      <a href="{{ url_for('views.home') }}">Return to Home</a>
+    </p>
   </div>
 </div>
-</div>
-
-<script src="{{ url_for('static', filename='js/home.js') }}"></script>
-<br />
 {% endblock %}
