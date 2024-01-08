@@ -1,6 +1,75 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Contact Us - PGK Academy{% endblock
+%} {% block content %}
 
-{% block title %}Contact Us - PGK Academy{% endblock %}
-
-{% block content %}
+<main class="contact-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="text-center mb-4">Get in Touch</h1>
+        <img
+          src="../static/images/contact_us.jpg"
+          alt="Contact Us Image"
+          class="img-fluid mb-4"
+          sizes="(max-width: 7px) 100vw, 7px"
+        />
+        <p>
+          We're here to answer any questions you may have. Reach out to us via
+          the form below or by using the contact information provided.
+        </p>
+        <ul class="contact-info">
+          <li>
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:pgkonlineacademy@gmail.com">pgkonlineacademy@gmail.com</a>
+          </li>
+          <li><i class="bi bi-phone"></i> +2519 41220158</li>
+          <li>
+            <i class="bi bi-geo-alt"></i> Addis Ababa, Ethiopia
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <form method="POST" action="{{ url_for('views.contact') }}">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              value="{% if current_user.is_authenticated %}{{current_user.username}}{% endif %}"
+              name="name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              {% if current_user.is_authenticated %}
+                value="{{current_user.email}}"
+                {% else %}
+                placeholder="Enter your email"
+                {% endif %}
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary text-center">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock %}

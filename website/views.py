@@ -5,6 +5,11 @@ from .decorators import check_confirmed
 from . import db
 from .email import send_email
 from .token import confirm_token, generate_confirmation_token
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Create a blueprint
 views = Blueprint('views', __name__)
@@ -22,9 +27,34 @@ def about_us():
     return render_template("about.html")
 
 
-@views.route('/Contact')
+@views.route('/Contact', methods=['GET', 'POST'])
 def contact():
-    return render_template("contact_us.html")
+    # Check if the request is a POST request
+    if request.method == 'POST':
+        # get the form data
+        name = request.form.get('name')
+        if current_user.is_authenticated:
+            email = current_user.email
+        else:
+            email = request.form.get('email')
+        message = request.form.get('message')
+
+        try:
+            # send the email
+            subject = "Contact from " + name
+            body = "Name: " + name + "\nEmail: " + email + "\nMessage: " + message  
+            send_email(os.getenv('MAIL_USERNAME'), subject, body)
+
+            flash('Your message has been sent successfully!', category='success')
+            if current_user.is_authenticated:
+                return redirect(url_for('views.dashboard'))
+            else:
+                return redirect(url_for('views.home'))
+        except Exception as e:
+            flash('Something went wrong. Please try again.', category='error')
+
+    return render_template('contact_us.html')
+
 
 
 @views.route('/dashboard')
