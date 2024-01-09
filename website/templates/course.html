@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ course.name }} - Course{% endblock %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y291cnNlJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlMjBzdHVkeSUyMGNhcmUlMjBidXNpbmVzcyUyMGNvdXJzZXMlMjBjYXJlJTIwc3R1ZHklMjBjYXJlJTIwYnVzaW5lc3MlMjBjb3Vyc2VzJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlMjBzdHVkeSUyMGNhcmUlMjBidXNpbmVzcyUyMGNvdXJzZXMlMjBjYXJlJTIwc3R1ZHklMjBjYXJlJTIwYnVzaW5lc3MlMjBjb3Vyc2VzJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlMjBzdHVkeSUyMGNhcmUlMjBidXNpbmVzcyUyMGNvdXJzZXMlMjBjYXJlJTIwc3R1ZHklMjBjYXJlJTIwYnVzaW5lc3MlMjBjb3Vyc2VzJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlM" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h1>python for beginners</h1>
+
+      <p>Here you can find all the courses you have created.</p>
+      <a href="{{ url_for('course.course_page', user_id=current_user.id) }}" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learn Python Basics</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex justify-content-end">
+        <a href="{{ url_for('views.dashboard', user_id=current_user.id) }}" class="btn btn-primary">Back to dashboard</a>
+        </div>
+<div class="container mt-5">
+    <h1 class="mb-4">Learn Python Basics</h1>
+    <!-- Introduction -->
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            Python is a popular programming language that is used for a variety of purposes, including web development,
+            data science, and more. Python is a great language for beginners because it is easy to learn and has a
+            simple syntax.
+        </p>
+    </section>
+    <!-- Variables -->
+    <section class="mt-4">
+        <h2>Variables</h2>
+        <p>
+            Variables are used to store data in Python. Variables can be assigned a value using the equals sign (=).
+            Variables can be named anything, but they cannot start with a number or contain spaces.
+        </p>
+
+        <pre>
+<code class="python">
+# Assigning a value to a variable
+x = 5
+</code>
+        </pre>
+    </section>
+    <!-- Data Types -->
+    <section class="mt-4">
+        <h2>Data Types</h2>
+        <p>
+            Python has several built-in data types, including integers, floats, strings, booleans, and lists.
+        </p>
+
+        <pre>
+<code class="python">
+# Integer
+x = 5
+
+# Float
+y = 5.5 
+
+# String
+x = "Hello, Python!"
+
+# Boolean
+x = True
+y = False
+
+# List
+x = [1, 2, 3, 4, 5]
+</code>
+        </pre>
+    </section>
+    <!-- Operators -->
+    <section class="mt-4">
+        <h2>Operators</h2>
+        <p>
+            Python has several built-in operators, including arithmetic, comparison, and logical operators.
+        </p>
+
+        <pre>
+<code class="python">
+# Arithmetic operators
+x = 5 + 5
+y = 5 - 5
+z = 5 * 5
+a = 5 / 5
+b = 5 % 5
+c = 5 ** 5
+
+# Comparison operators
+x = 5 == 5
+y = 5 != 5
+z = 5 > 5
+a = 5 < 5
+b = 5 >= 5
+c = 5 <= 5
+
+# Logical operators
+x = True and True
+y = True or False
+z = not True
+</code>
+        </pre>
+    </section>
+    <!-- Conditional Statements -->
+    <section class="mt-4">
+        <h2>Conditional Statements</h2>
+        <p>
+            Conditional statements are used to execute code based on a condition. Python has several built-in
+            conditional statements, including if, elif, and else.
+        </p>
+
+        <pre>
+<code class="python">
+# If statement
+x = 5
+if x == 5:
+    print("x is equal to 5")
+
+# If-else statement
+x = 5
+if x == 5:
+    print("x is equal to 5")
+else:
+    print("x is not equal to 5")
+
+# If-elif-else statement
+x = 5
+if x == 5:
+    print("x is equal to 5")
+elif x == 6:
+    print("x is equal to 6")
+else:
+    print("x is not equal to 5 or 6")
+
+# Nested if statement
+x = 5
+if x == 5:
+
+    if x == 6:
+        print("x is equal to 6")
+    else:
+        print("x is not equal to 6")
+
+else:
+    print("x is not equal to 5")
+</code>
+        </pre>
+    </section>
+    <!-- Code snippet -->
+    <section class="mt-4">
+        <h2>Code Snippet</h2>
+        <p>
+            Here is an example of a Python program that prints "Hello, World!" to the console.
+        </p>
+
+        <pre>
+<code class="python">
+print("Hello, World!")
+
+# Output: Hello, World!
+
+</code>
+        </pre>
+    </section>
+    <!-- Conclusion -->
+    <section class="mt-4">
+        <h2>Conclusion</h2>
+        <p>
+            Python is a great language for beginners because it is easy to learn and has a simple syntax. Python is
+            used for a variety of purposes, including web development, data science, and more.
+        </p>
+    </section>
+
+    <!-- Back to top button -->
+    <div class="d-flex justify-content-end">
+        <a href="#top" class="btn btn-primary">Back to top</a>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

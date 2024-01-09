@@ -9,7 +9,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="{{ url_for('profile.profile_page', user_id=current_user.id) }}"><i class="bi bi-person-circle"></i>My Profile</a>
       <a class="dropdown-item" href="{{ url_for('profile.upload_picture', user_id=current_user.id) }}">&nbsp;<i class="bi bi-gear"></i>Settings</a>
-      <li><a class="dropdown-item" href="{{ url_for('course.create_course', user_id=current_user.id) }}">&nbsp;<i class="bi bi-pen"></i>Create Course</a></li>
+      <li><a class="dropdown-item" href="{{ url_for('course.view_course', user_id=current_user.id) }}">&nbsp;<i class="bi bi-pen"></i>Create Course</a></li>
       <li><hr class="dropdown-divider"></li>
       <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
     </ul>
@@ -33,11 +33,12 @@
 
     <!--Courses card-->
     <div class="card" style="width: 18rem;">
-      <img src="" class="card-img-top" alt="...">
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y291cnNlJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlMjBzdHVkeSUyMGNhcmUlMjBidXNpbmVzcyUyMGNvdXJzZXMlMjBjYXJlJTIwc3R1ZHklMjBjYXJlJTIwYnVzaW5lc3MlMjBjb3Vyc2VzJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlMjBzdHVkeSUyMGNhcmUlMjBidXNpbmVzcyUyMGNvdXJzZXMlMjBjYXJlJTIwc3R1ZHklMjBjYXJlJTIwYnVzaW5lc3MlMjBjb3Vyc2VzJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlMjBzdHVkeSUyMGNhcmUlMjBidXNpbmVzcyUyMGNvdXJzZXMlMjBjYXJlJTIwc3R1ZHklMjBjYXJlJTIwYnVzaW5lc3MlMjBjb3Vyc2VzJTIwY2FyZSUyMHN0dWR5JTIwY2FyZSUyMGJ1c2luZXNzJTIwY291cnNlcyUyMGNhcmUlM" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python Foe Beginners</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Get Started</a>
+        <h1>python for beginners</h1>
+
+        <p>Here you can find all the courses you have created.</p>
+        <a href="{{ url_for('course.course_page', user_id=current_user.id) }}" class="btn btn-primary">Get Started</a>
       </div>
     </div>
 {% endblock %}

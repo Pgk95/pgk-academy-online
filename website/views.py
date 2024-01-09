@@ -103,7 +103,3 @@ def resend_confirmation():
     send_email(current_user.email, subject, html)
     flash('A new confirmation emai has been sent.', 'success')
     return redirect(url_for('views.unconfirmed'))
-
-@views.route('/courses')
-def courses():
-    return render_template('courses.html')

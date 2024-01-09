@@ -52,6 +52,7 @@ def create_app():
     from .course import course
     from .profile import profile
 
+
     # register the blueprints
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
@@ -59,7 +60,7 @@ def create_app():
     app.register_blueprint(profile, url_prefix='/dashboard/')
 
     # database creation
-    from .models import User, Course
+    from .models import User
 
     create_db(app)
 

@@ -1,10 +1,9 @@
-from .import db
+from . import db
 from flask_login import UserMixin
-from flask import current_app
 from sqlalchemy.sql import func
-from datetime import datetime, timedelta
 
 # Create a User model
+
 
 class User(db.Model, UserMixin):
     # Create the columns of the table
@@ -17,23 +16,21 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
     reset_token = db.Column(db.String(1000), unique=True)
-    
+
     # set the table name to 'users'
     __tablename__ = 'users'
 
 
 # Create a Course mode
 
-class Course(db.Model, UserMixin):
+# class Course(db.Model, UserMixin):
     # Create the columns of the table
-    id = db.Column(db.Integer, primary_key=True)
-    course_title = db.Column(db.String(255), nullable=False)
-    course_description = db.Column(db.String(1000), nullable=False)
-    course_intructor = db.Column(db.String(255), nullable=False)
-    course_price = db.Column(db.Integer, nullable=False)
-    course_level = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime(timezone=True),
-                           server_default=func.now())
+    # id = db.Column(db.Integer, primary_key=True)
+   # name = db.Column(db.String(255), nullable=False)
+   # description = db.Column(db.Text, nullable=False)
+   # pdf_link = db.Column(db.String(255), nullable=False)
+   # created_at = db.Column(db.DateTime(timezone=True),
+                          # server_default=func.now())
 
     # set the table name to 'courses'
-    __tablename__ = 'courses'
+    # __tablename__ = 'courses'

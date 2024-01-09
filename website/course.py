@@ -6,7 +6,12 @@ course = Blueprint('course', __name__)
 
 
 # Initialize the routes
-@course.route('/create_course')
+@course.route('/course', methods=['GET', 'POST'])
 @login_required
-def create_course():
-    return render_template('create_course.html')
+def view_course():
+    return render_template('course.html', course=course)
+
+@course.route('/course_page')
+@login_required
+def course_page():
+    return render_template('./courses/course_python.html')
