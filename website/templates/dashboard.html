@@ -9,7 +9,6 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="{{ url_for('profile.profile_page', user_id=current_user.id) }}"><i class="bi bi-person-circle"></i>My Profile</a>
       <a class="dropdown-item" href="{{ url_for('profile.upload_picture', user_id=current_user.id) }}">&nbsp;<i class="bi bi-gear"></i>Settings</a>
-      <li><a class="dropdown-item" href="{{ url_for('course.view_course', user_id=current_user.id) }}">&nbsp;<i class="bi bi-pen"></i>Create Course</a></li>
       <li><hr class="dropdown-divider"></li>
       <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout&nbsp;<i class="bi bi-box-arrow-right"></i></a>
     </ul>

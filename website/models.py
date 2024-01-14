@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
 
-# Create a Course mode
+# Create a Course model
 
 # class Course(db.Model, UserMixin):
     # Create the columns of the table
